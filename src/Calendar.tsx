@@ -1,9 +1,9 @@
-import CalendarLib from "../../lib/calendar/CalendarLib";
+import RangeCalendar from "./components/RangeCalendar";
 
 const Calendar = () => {
   return (
     <div>
-      <CalendarLib />
+      <RangeCalendar />
     </div>
   );
 };

@@ -1,9 +1,8 @@
 import { useMemo, useState } from "react";
+import CalendarMonth from "./month/CalendarMonth";
+import CalendarDay from "./dates/CalendarDay";
 
-import CalendarDay from "./components/dates/CalendarDay";
-import CalendarMonth from "./components/month/CalendarMonth";
-
-const CalendarLib = () => {
+const RangeCalendar = () => {
   const [choiceMonth, setChoiceMonth] = useState<number>(0);
   // 현재 시간의 날짜 객체 생성
   const currentDate = new Date();
@@ -93,4 +92,4 @@ const CalendarLib = () => {
   );
 };
 
-export default CalendarLib;
+export default RangeCalendar;
