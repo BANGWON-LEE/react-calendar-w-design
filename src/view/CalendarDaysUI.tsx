@@ -1,14 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import { CalendarDaysUIType } from "../type";
+import { MonthContext } from "../context/MonthProvider";
+import { MonthContextType } from "../type/contextType";
 
 const CalendarDaysUI = (props: CalendarDaysUIType) => {
-  const {
-    arrDayState,
-    currentMonth,
-    dateRange,
-    btnDisabled,
-    toggleDay,
-  }: CalendarDaysUIType = props;
+  const { arrDayState, dateRange, btnDisabled, toggleDay }: CalendarDaysUIType =
+    props;
+
+  const { choiceMonth, setChoiceMonth } =
+    useContext<MonthContextType>(MonthContext);
+
+  const currentDate = new Date();
+
+  const initialMonth = currentDate.getMonth() + 1;
+  const currentMonth = initialMonth + Number(choiceMonth);
+  console.log("fefef11111", currentMonth);
 
   return (
     <div className=".calendar_day_block">
@@ -27,8 +33,8 @@ const CalendarDaysUI = (props: CalendarDaysUIType) => {
             <div key={Number(day)} className="calendar_day_inner">
               <button
                 className={`calendar_day_btn ${
-                  currentMonth !== ((day as Date).getMonth() + 1).toString() &&
-                  btnDisabled
+                  String(currentMonth) !==
+                    ((day as Date).getMonth() + 1).toString() && btnDisabled
                 }
                     ${
                       dateRange?.end === new Date(day.toString()).getTime() &&
@@ -49,7 +55,7 @@ const CalendarDaysUI = (props: CalendarDaysUIType) => {
                 type="button"
                 onClick={() => toggleDay(day)}
                 disabled={
-                  props.currentMonth !==
+                  String(currentMonth) !==
                   ((day as Date).getMonth() + 1).toString()
                 }
               >

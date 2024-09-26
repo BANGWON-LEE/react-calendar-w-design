@@ -1,18 +1,18 @@
-import { useEffect, useState } from "react";
-import { CalendarDayType, DayInfoType } from "../../type";
+import { useContext, useEffect, useState } from "react";
+import { DayInfoType, initialDayInfo } from "../../type";
 import CalendarDaysUI from "../../view/CalendarDaysUI";
+import { DayContextType } from "../../type/contextType";
+import { DayContext } from "../../context/DayProvider";
 
-const CalendarDay = (props: CalendarDayType) => {
-  const { currentMonth }: CalendarDayType = props;
+const CalendarDay = () => {
+  // const { currentMonth }: CalendarDayType =
+  const { allDates, setAllDates } = useContext<DayContextType>(DayContext);
 
-  const initialDayInfo: DayInfoType = {
-    start: 0,
-    end: 0,
-  };
   const [dateRange, setDateRange] = useState<DayInfoType>(initialDayInfo);
 
   const toggleDay = (day: object | string): void => {
     const dayInfo: number = new Date(day.toString()).getTime();
+    console.log("ffefef", dayInfo);
 
     setDateRange((prevDateRange) => {
       if (prevDateRange.start === 0) {
@@ -69,18 +69,18 @@ const CalendarDay = (props: CalendarDayType) => {
   };
 
   useEffect(() => {
-    if (props.allDates !== undefined) {
-      console.log("보기", props.allDates);
-      divideDay(props.allDates);
+    if (allDates !== undefined) {
+      console.log("보기", allDates);
+      const dateArray: Date[] = allDates.filter((item) => item instanceof Date);
+      divideDay(dateArray);
     }
-  }, [props.allDates]);
+  }, [allDates]);
 
   const btnDisabled = "opacity-25 pointer-events-none";
 
   return (
     <CalendarDaysUI
       arrDayState={arrDayState}
-      currentMonth={currentMonth}
       dateRange={dateRange}
       btnDisabled={btnDisabled}
       toggleDay={toggleDay}
