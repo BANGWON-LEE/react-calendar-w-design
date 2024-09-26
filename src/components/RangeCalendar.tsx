@@ -1,16 +1,21 @@
-import { useMemo, useState } from "react";
+import { useContext, useMemo, useState } from "react";
 import CalendarMonth from "./month/CalendarMonth";
 import CalendarDay from "./dates/CalendarDay";
+import { MonthContext } from "../context/MonthProvider";
+import { DayContextType, MonthContextType } from "../type/contextType";
+import { DayContext } from "../context/DayProvider";
 
 const RangeCalendar = () => {
-  const [choiceMonth, setChoiceMonth] = useState<number>(0);
-  // 현재 시간의 날짜 객체 생성
+  // context api로 전역처리 할 예정
+  const { choiceMonth, setChoiceMonth } =
+    useContext<MonthContextType>(MonthContext);
+
   const currentDate = new Date();
 
   // 선택한 달의 첫 날 (예 : 7월을 선택했을 경우 7월 1일을 가져옴)
   const choiceDate = new Date(
     currentDate.getFullYear(),
-    currentDate.getMonth() + choiceMonth
+    currentDate.getMonth() + Number(choiceMonth)
   );
 
   // 현재 달의 다음 달을 구합니다.
@@ -19,7 +24,7 @@ const RangeCalendar = () => {
   const nextMonth =
     currentDate.getMonth() === 11
       ? 0
-      : currentDate.getMonth() + 1 + choiceMonth;
+      : currentDate.getMonth() + 1 + Number(choiceMonth);
 
   const nextMonthYear =
     currentDate.getMonth() === 11
@@ -49,7 +54,8 @@ const RangeCalendar = () => {
 
   console.log("토토", secondSaturdayOfNextMonth);
 
-  const [allDates, setAllDates] = useState<Date[]>([]);
+  // context로 전역처리 할 곳
+  const { allDates, setAllDates } = useContext<DayContextType>(DayContext);
 
   useMemo(() => {
     const standardDate = new Date(lastSundayOfPreviousMonth);
@@ -73,21 +79,10 @@ const RangeCalendar = () => {
 
   // console.log("all", allDates);
 
-  const initialMonth = currentDate.getMonth() + 1;
-  const currentMonth = initialMonth + choiceMonth;
-
   return (
     <div className="calendar_block">
-      <CalendarMonth
-        choiceMonth={choiceMonth}
-        currentMonth={currentMonth.toString()}
-        setChoiceMonth={(newState: number | null) => {
-          if (newState !== null) {
-            setChoiceMonth(newState);
-          }
-        }}
-      />
-      <CalendarDay allDates={allDates} currentMonth={currentMonth.toString()} />
+      <CalendarMonth />
+      <CalendarDay />
     </div>
   );
 };

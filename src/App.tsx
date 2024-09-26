@@ -1,11 +1,18 @@
 // import "./App.css";
+import Calendar from "./Calendar";
+import DayProvider from "./context/DayProvider";
+import MonthProvider from "./context/MonthProvider";
 import "./styles/calendar.css";
-import CalendarLib from "./lib/calendar/CalendarLib";
-
 function App() {
   return (
     <>
-      <CalendarLib />
+      <MonthProvider>
+        <DayProvider>
+          <div className="App">
+            <Calendar />
+          </div>
+        </DayProvider>
+      </MonthProvider>
     </>
   );
 }
