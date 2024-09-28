@@ -1,5 +1,5 @@
-import LeftImg from "../../assets/calendar_left.png";
-import RightImg from "../../assets/calendar_right.png";
+import LeftImg from "../assets/calendar_left.png";
+import RightImg from "../assets/calendar_right.png";
 import { CalendarMonthUIType } from "../type";
 
 const CalendarMonthUI = (props: CalendarMonthUIType) => {
