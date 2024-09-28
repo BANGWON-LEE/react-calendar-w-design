@@ -80,9 +80,11 @@ const RangeCalendar = () => {
   // console.log("all", allDates);
 
   return (
-    <div className="calendar_block">
-      <CalendarMonth />
-      <CalendarDay />
+    <div className="modal">
+      <div className="calendar_block">
+        <CalendarMonth />
+        <CalendarDay />
+      </div>
     </div>
   );
 };
