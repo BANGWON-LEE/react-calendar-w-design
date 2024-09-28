@@ -1,0 +1,32 @@
+.input_block {
+  width: 19%;
+  height: 3.2vh;
+  padding: 0.5% 1%;
+  border: 1px solid #999999;
+  display: flex;
+  border-radius: 12px;
+}
+
+.calendar_input {
+  border: none;
+  width: 90%;
+  color: #999999;
+  font-size: large;
+  font-weight: bold;
+}
+
+.calendar_btn_block {
+  height: auto;
+}
+
+.calendar_btn {
+  width: 2rem;
+  height: 2rem;
+  padding: 0px;
+}
+
+.calendar_btn_img {
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+}

@@ -1,9 +1,9 @@
-import RangeCalendar from "./components/RangeCalendar";
+import Range from "./components/kind/Range";
 
 const Calendar = () => {
   return (
     <div>
-      <RangeCalendar />
+      <Range />
     </div>
   );
 };

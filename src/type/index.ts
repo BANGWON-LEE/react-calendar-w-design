@@ -18,3 +18,7 @@ export interface CalendarMonthUIType {
   nextMonth: (choiceMonth: number) => void;
   currentMonth: number | boolean;
 }
+
+export type OpenModalType = {
+  handleOpenModal: () => void;
+};
