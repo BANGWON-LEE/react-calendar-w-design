@@ -1,5 +1,6 @@
 // import "./App.css";
 import Calendar from "./Calendar";
+import DateRangeProvider from "./context/DateRangeProvider";
 import DayProvider from "./context/DayProvider";
 import OpenModalProvider from "./context/input-btn/OpenModalProvider";
 import MonthProvider from "./context/MonthProvider";
@@ -10,15 +11,17 @@ import "./styles/calendarModal.css";
 function App() {
   return (
     <>
-      <OpenModalProvider>
-        <MonthProvider>
-          <DayProvider>
-            <div className="App">
-              <Calendar />
-            </div>
-          </DayProvider>
-        </MonthProvider>
-      </OpenModalProvider>
+      <DayProvider>
+        <DateRangeProvider>
+          <MonthProvider>
+            <OpenModalProvider>
+              <div className="App">
+                <Calendar />
+              </div>
+            </OpenModalProvider>
+          </MonthProvider>
+        </DateRangeProvider>
+      </DayProvider>
     </>
   );
 }
