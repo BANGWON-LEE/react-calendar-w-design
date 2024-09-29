@@ -1,36 +1,51 @@
 import { useContext, useEffect, useState } from "react";
-import { DayInfoType, initialDayInfo } from "../../type";
 import CalendarDaysUI from "../../view/CalendarDaysUI";
-import { DayContextType } from "../../type/contextType";
+import {
+  DateRangeContextType,
+  // DateRangeContextType,
+  DateRangeType,
+  DayContextType,
+} from "../../type/contextType";
 import { DayContext } from "../../context/DayProvider";
+import { DateRangeContext } from "../../context/DateRangeProvider";
 
 const CalendarDay = () => {
-  // const { currentMonth }: CalendarDayType =
-  const { allDates, setAllDates } = useContext<DayContextType>(DayContext);
+  const { allDates } = useContext<DayContextType>(DayContext);
 
-  const [dateRange, setDateRange] = useState<DayInfoType>(initialDayInfo);
+  const { dateRange, setDateRange } =
+    useContext<DateRangeContextType>(DateRangeContext);
 
-  const toggleDay = (day: object | string): void => {
-    const dayInfo: number = new Date(day.toString()).getTime();
-    console.log("ffefef", dayInfo);
+  // const [dateRange, setDateRange] = useState({
+  //   start: new Date(),
+  //   end: new Date(),
+  // });
 
-    setDateRange((prevDateRange) => {
-      if (prevDateRange.start === 0) {
+  const toggleDay = (day: string | Date): void => {
+    const selectedDate = new Date(day.toString());
+    console.log("Selected date:", selectedDate);
+
+    setDateRange((prevDateRange: any) => {
+      console.log("Previous date range:", prevDateRange);
+
+      if (prevDateRange.start.getTime() === 0) {
         return {
           ...prevDateRange,
-          start: dayInfo,
-        }; // 이 리턴을 통해 범위의 시작과 끝이 초기화 되지 않음
-      }
-      if (prevDateRange.start !== 0 && prevDateRange.start < dayInfo) {
+          start: selectedDate,
+        };
+      } else if (prevDateRange.start < selectedDate) {
         return {
           ...prevDateRange,
-          end: dayInfo,
-        }; // 이 리턴을 통해 범위의 시작과 끝이 초기화 되지 않음
+          end: selectedDate,
+        };
+      } else {
+        // 다른 조건이나 기본값 처리
+        return {
+          start: selectedDate,
+          end: new Date(0), // 또는 다른 적절한 초기값
+        };
       }
-      return initialDayInfo;
     });
   };
-
   const [arrDayState, setArrDayState] = useState<object[][] | string[][]>();
 
   const divideDay = (data: Date[]) => {
@@ -81,8 +96,8 @@ const CalendarDay = () => {
   return (
     <CalendarDaysUI
       arrDayState={arrDayState}
-      dateRange={dateRange}
       btnDisabled={btnDisabled}
+      dateRange={dateRange}
       toggleDay={toggleDay}
     />
   );

@@ -2,19 +2,20 @@ import React, { useContext } from "react";
 import { CalendarDaysUIType } from "../type";
 import { MonthContext } from "../context/MonthProvider";
 import { MonthContextType } from "../type/contextType";
+// import { DateRangeContext } from "../context/DateRangeProvider";
 
 const CalendarDaysUI = (props: CalendarDaysUIType) => {
-  const { arrDayState, dateRange, btnDisabled, toggleDay }: CalendarDaysUIType =
+  const { arrDayState, btnDisabled, dateRange, toggleDay }: CalendarDaysUIType =
     props;
 
-  const { choiceMonth, setChoiceMonth } =
-    useContext<MonthContextType>(MonthContext);
+  console.log("dateRange33", dateRange);
+
+  const { choiceMonth } = useContext<MonthContextType>(MonthContext);
 
   const currentDate = new Date();
 
   const initialMonth = currentDate.getMonth() + 1;
   const currentMonth = initialMonth + Number(choiceMonth);
-  console.log("fefef11111", currentMonth);
 
   return (
     <div className=".calendar_day_block">
@@ -37,23 +38,25 @@ const CalendarDaysUI = (props: CalendarDaysUIType) => {
                     ((day as Date).getMonth() + 1).toString() && btnDisabled
                 }
                     ${
-                      dateRange?.end === new Date(day.toString()).getTime() &&
+                      new Date(dateRange?.end).getTime() ===
+                        new Date(day.toString()).getTime() &&
                       "calendar_day_point_right calendar_day_point"
                     }
                     ${
-                      dateRange?.start === new Date(day.toString()).getTime() &&
+                      new Date(dateRange?.start).getTime() ===
+                        new Date(day.toString()).getTime() &&
                       "calendar_day_point_left calendar_day_point"
                     }
                     ${
-                      (dateRange?.start as number) <
+                      new Date(dateRange?.start).getTime() <
                         new Date(day.toString()).getTime() &&
-                      (dateRange?.end as number) >
+                      new Date(dateRange?.end).getTime() >
                         new Date(day.toString()).getTime() &&
                       "calendar_day_range"
                     }
                     `}
                 type="button"
-                onClick={() => toggleDay(day)}
+                onClick={() => toggleDay(day as Date | string)}
                 disabled={
                   String(currentMonth) !==
                   ((day as Date).getMonth() + 1).toString()

@@ -10,7 +10,7 @@ export const DayContext = createContext<DayContextType>({
 
 // 2. Provider 컴포넌트
 const DayProvider = ({ children }: { children: React.ReactNode }) => {
-  const [allDates, setAllDates] = useState<(string | number | Date)[]>([]);
+  const [allDates, setAllDates] = useState<(number | Date)[]>([]);
 
   return (
     <DayContext.Provider value={{ allDates, setAllDates }}>

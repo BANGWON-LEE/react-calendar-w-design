@@ -1,7 +1,7 @@
 .input_block {
-  width: 19%;
+  width: 13%;
   height: 3.2vh;
-  padding: 0.5% 1%;
+  padding: 0.3% 0.8%;
   border: 1px solid #999999;
   display: flex;
   border-radius: 12px;
@@ -29,4 +29,20 @@
   width: 100%;
   height: 100%;
   padding: 0px;
+}
+
+.calendar_close_block {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 3%;
+}
+
+.calendar_close_btn {
+  border: 1px solid #999999;
+  background-color: #999999;
+  color: #ffffff;
+  font-weight: bold;
+  text-align: center;
+  margin: 0 auto;
 }
