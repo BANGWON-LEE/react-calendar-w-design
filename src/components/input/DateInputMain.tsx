@@ -1,4 +1,3 @@
-import React from "react";
 import InputText from "./InputText";
 import InputBtn from "./InputBtn";
 

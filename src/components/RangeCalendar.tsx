@@ -1,14 +1,21 @@
-import { useContext, useMemo, useState } from "react";
+import { useContext, useEffect, useMemo } from "react";
 import CalendarMonth from "./month/CalendarMonth";
 import CalendarDay from "./dates/CalendarDay";
 import { MonthContext } from "../context/MonthProvider";
-import { DayContextType, MonthContextType } from "../type/contextType";
+import {
+  DayContextType,
+  MonthContextType,
+  RangeBtnContextType,
+} from "../type/contextType";
 import { DayContext } from "../context/DayProvider";
+import { openModalContext } from "../context/input-btn/OpenModalProvider";
 
 const RangeCalendar = () => {
   // context api로 전역처리 할 예정
   const { choiceMonth, setChoiceMonth } =
     useContext<MonthContextType>(MonthContext);
+
+  const { allDates, setAllDates } = useContext<DayContextType>(DayContext);
 
   const currentDate = new Date();
 
@@ -55,9 +62,8 @@ const RangeCalendar = () => {
   console.log("토토", secondSaturdayOfNextMonth);
 
   // context로 전역처리 할 곳
-  const { allDates, setAllDates } = useContext<DayContextType>(DayContext);
 
-  useMemo(() => {
+  useEffect(() => {
     const standardDate = new Date(lastSundayOfPreviousMonth);
     const datesToAdd: Date[] = [];
 
@@ -74,16 +80,31 @@ const RangeCalendar = () => {
       // console.log("datesToAdd", datesToAdd);
     }
 
-    setAllDates((dates) => [...dates, ...datesToAdd]);
+    setAllDates((prev) => [...prev, ...datesToAdd]);
   }, [choiceMonth]);
 
   // console.log("all", allDates);
+
+  const { openModal, setOpenModal } =
+    useContext<RangeBtnContextType>(openModalContext);
+
+  const handleCloseModal = () => {
+    setOpenModal(!openModal);
+  };
 
   return (
     <div className="modal">
       <div className="calendar_block">
         <CalendarMonth />
         <CalendarDay />
+        <div className="calendar_close_block">
+          <button
+            className="calendar_close_btn"
+            onClick={() => handleCloseModal()}
+          >
+            Close
+          </button>
+        </div>
       </div>
     </div>
   );

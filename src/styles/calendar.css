@@ -4,7 +4,7 @@
 }
 
 .calendar_month_block {
-  margin: 0 auto;
+  margin: 2% auto;
   display: flex;
   width: fit-content;
 }
