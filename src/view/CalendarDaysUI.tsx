@@ -5,20 +5,21 @@ import { MonthContextType } from "../type/contextType";
 // import { DateRangeContext } from "../context/DateRangeProvider";
 
 const CalendarDaysUI = (props: CalendarDaysUIType) => {
-  const { arrDayState, btnDisabled, dateRange, toggleDay }: CalendarDaysUIType =
+  const { arrDayState,  dateRange, toggleDay }: CalendarDaysUIType =
     props;
 
-  console.log("dateRange33", dateRange);
+  // console.log("dateRange33", dateRange);
 
   const { choiceMonth } = useContext<MonthContextType>(MonthContext);
 
-  const currentDate = new Date();
 
-  const initialMonth = currentDate.getMonth() + 1;
-  const currentMonth = initialMonth + Number(choiceMonth);
+
+  const currentMonth = new Date(choiceMonth).getMonth();
+
+
 
   return (
-    <div className=".calendar_day_block">
+    <div className="calendar_day_block">
       <div className="calendar_day_week">
         <div>일</div>
         <div>월</div>
@@ -30,36 +31,32 @@ const CalendarDaysUI = (props: CalendarDaysUIType) => {
       </div>
       {arrDayState?.slice(0, 6).map((el) => (
         <div className="calendar_day_week" key={Number(el[0])}>
-          {el.map((day: string | object) => (
+          {el.map((day: string | object ) => (
             <div key={Number(day)} className="calendar_day_inner">
               <button
-                className={`calendar_day_btn ${
-                  String(currentMonth) !==
-                    ((day as Date).getMonth() + 1).toString() && btnDisabled
-                }
+                className={`calendar_day_btn 
                     ${
                       new Date(dateRange?.end).getTime() ===
-                        new Date(day.toString()).getTime() &&
-                      "calendar_day_point_right calendar_day_point"
+                        new Date(day.toString()).getTime() ?
+                      "calendar_day_point_right calendar_day_point" : ''
                     }
                     ${
                       new Date(dateRange?.start).getTime() ===
-                        new Date(day.toString()).getTime() &&
-                      "calendar_day_point_left calendar_day_point"
+                        new Date(day.toString()).getTime() ?
+                      "calendar_day_point_left calendar_day_point" : ''
                     }
                     ${
                       new Date(dateRange?.start).getTime() <
                         new Date(day.toString()).getTime() &&
                       new Date(dateRange?.end).getTime() >
-                        new Date(day.toString()).getTime() &&
-                      "calendar_day_range"
+                        new Date(day.toString()).getTime() ?
+                      "calendar_day_range" : ''
                     }
                     `}
                 type="button"
                 onClick={() => toggleDay(day as Date | string)}
                 disabled={
-                  String(currentMonth) !==
-                  ((day as Date).getMonth() + 1).toString()
+                  Number(currentMonth) !== new Date(day.toString()).getMonth() 
                 }
               >
                 {(day as Date).getDate()}
