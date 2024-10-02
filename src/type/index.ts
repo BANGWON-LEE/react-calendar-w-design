@@ -5,7 +5,7 @@ export interface DayInfoType {
 export interface CalendarDaysUIType {
   arrDayState: object[][] | string[][] | undefined;
   dateRange: DateRangeType;
-  btnDisabled: string;
+  // btnDisabled: string;
   toggleDay: (day: string | Date) => void;
 }
 
@@ -14,9 +14,9 @@ export const initialDayInfo: DayInfoType = {
   end: 0,
 };
 export interface CalendarMonthUIType {
-  prevMonth: (choiceMonth: number) => void;
-  nextMonth: (choiceMonth: number) => void;
-  currentMonth: number | boolean;
+  prevMonth: (choiceMonth: Date) => void;
+  nextMonth: (choiceMonth: Date) => void;
+  currentMonth:  Date ;
 }
 
 export type OpenModalType = {

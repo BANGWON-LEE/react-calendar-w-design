@@ -2,12 +2,11 @@ import { useContext, useEffect, useState } from "react";
 import CalendarDaysUI from "../../view/CalendarDaysUI";
 import {
   DateRangeContextType,
-  // DateRangeContextType,
-  DateRangeType,
   DayContextType,
 } from "../../type/contextType";
 import { DayContext } from "../../context/DayProvider";
 import { DateRangeContext } from "../../context/DateRangeProvider";
+import { MonthContext } from "../../context/MonthProvider";
 
 const CalendarDay = () => {
   const { allDates } = useContext<DayContextType>(DayContext);
@@ -15,14 +14,13 @@ const CalendarDay = () => {
   const { dateRange, setDateRange } =
     useContext<DateRangeContextType>(DateRangeContext);
 
-  // const [dateRange, setDateRange] = useState({
-  //   start: new Date(),
-  //   end: new Date(),
-  // });
+
+
 
   const toggleDay = (day: string | Date): void => {
+    console.log
     const selectedDate = new Date(day.toString());
-    console.log("Selected date:", selectedDate);
+    console.log("Selected date:", day);
 
     setDateRange((prevDateRange: any) => {
       console.log("Previous date range:", prevDateRange);
@@ -51,6 +49,8 @@ const CalendarDay = () => {
   const divideDay = (data: Date[]) => {
     const dayArray: object[][] = [];
     const weekArray: Date[] = [new Date()];
+
+    console.log('ffff', data)
 
     let i = 0;
     for (let j = 0; j < data.length; j += 1) {
@@ -91,12 +91,12 @@ const CalendarDay = () => {
     }
   }, [allDates]);
 
-  const btnDisabled = "opacity-25 pointer-events-none";
+  // const btnDisabled = "opacity-25 pointer-events-none";
 
   return (
     <CalendarDaysUI
       arrDayState={arrDayState}
-      btnDisabled={btnDisabled}
+      // btnDisabled={btnDisabled}
       dateRange={dateRange}
       toggleDay={toggleDay}
     />

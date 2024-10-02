@@ -1,6 +1,6 @@
 export interface MonthContextType {
-  choiceMonth: number | string;
-  setChoiceMonth: React.Dispatch<React.SetStateAction<number | string>>;
+  choiceMonth: Date | number;
+  setChoiceMonth: React.Dispatch<React.SetStateAction<Date | number>>;
 }
 
 export type DayContextType = {
