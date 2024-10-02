@@ -32,8 +32,6 @@ const CalendarDaysUI = (props: CalendarDaysUIType) => {
       {arrDayState?.slice(0, 6).map((el) => (
         <div className="calendar_day_week" key={Number(el[0])}>
           {el.map((day: string | object ) => (
-        
-            console.log('gggg',    Number(currentMonth) ,'<====>', new Date(day.toString()).getMonth() + 1),
             <div key={Number(day)} className="calendar_day_inner">
               <button
                 className={`calendar_day_btn 

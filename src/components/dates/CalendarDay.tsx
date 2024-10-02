@@ -85,7 +85,6 @@ const CalendarDay = () => {
 
   useEffect(() => {
     if (allDates !== undefined) {
-      console.log("보기", allDates);
       const dateArray: Date[] = allDates.filter((item) => item instanceof Date);
       divideDay(dateArray);
     }

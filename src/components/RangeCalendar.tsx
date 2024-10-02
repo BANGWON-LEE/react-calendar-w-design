@@ -17,8 +17,6 @@ const RangeCalendar = () => {
 
   const { allDates, setAllDates } = useContext<DayContextType>(DayContext);
 
-  console.log('choiceMonth', choiceMonth)
-
   const currentDate = new Date(choiceMonth);
   // console.log('현재', currentDate)
 
@@ -29,9 +27,7 @@ const RangeCalendar = () => {
   
   // 해당 월의 첫째 날 생성
   const firstDay = new Date(year, month, 1);
-  // const firstDayOfThisMonth = new Date(todayMonth)
 
-  console.log('firstDay', firstDay)
   
   // 현재 달의 다음 달을 구합니다.
   // JS 월을 나타낼 때, 0 =>1월 1=> 2월 따라서 11월일 12월이기 때문에
