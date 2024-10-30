@@ -3,14 +3,26 @@
   height: 30%;
 }
 
+/* .calendar_container {
+  width: 100%;
+  height: auto;
+  display: grid;
+} */
+
+.calendar_main_block {
+  width: 100%;
+  height: 320px;
+}
+
 .calendar_month_block {
   margin: 2% auto;
   display: flex;
-  width: fit-content;
+  justify-content: center;
+  /* width: fit-content; */
 }
 
 .calendar_month_block_now {
-  width: 17%;
+  width: auto;
   align-content: center;
 }
 
@@ -48,14 +60,14 @@
   width: 3.5rem;
 }
 
-.calendar_day_point_left {
-  border-top-left-radius: 100%;
-  border-bottom-left-radius: 100%;
+/* .calendar_day_point_left {
+  border-top-left-radius: 40%;
+  border-bottom-left-radius: 40%;
 }
 .calendar_day_point_right {
-  border-top-right-radius: 100%;
-  border-bottom-right-radius: 100%;
-}
+  border-top-right-radius: 40%;
+  border-bottom-right-radius: 40%;
+} */
 
 .calendar_day_point {
   background-color: #f15b8c;
