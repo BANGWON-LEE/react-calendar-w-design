@@ -16,7 +16,7 @@ export const initialDayInfo: DayInfoType = {
 export interface CalendarMonthUIType {
   prevMonth: (choiceMonth: Date) => void;
   nextMonth: (choiceMonth: Date) => void;
-  currentMonth:  Date ;
+  formatCurrentDate: Date;
 }
 
 export type OpenModalType = {

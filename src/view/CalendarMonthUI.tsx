@@ -3,16 +3,16 @@ import RightImg from "../assets/calendar_right.png";
 import { CalendarMonthUIType } from "../type";
 
 const CalendarMonthUI = (props: CalendarMonthUIType) => {
-  const { prevMonth, nextMonth, currentMonth } = props;
+  const { prevMonth, nextMonth, formatCurrentDate } = props;
 
-  
-  const choiceCurrentMonth = currentMonth.getMonth() + 1
-  console.log('fefef', choiceCurrentMonth)
+  const choicedCurrentMonth = formatCurrentDate.getMonth() + 1;
+  const choicedCurrentYear = formatCurrentDate.getFullYear();
+  // console.log('fefef', choicedCurrentMonth)
 
   return (
     <div className="calendar_month_block">
       <div className="calendar_month_block_inner_right">
-        <button type="button" onClick={() => prevMonth(currentMonth)}>
+        <button type="button" onClick={() => prevMonth(formatCurrentDate)}>
           <img
             className="calendar_month_arrow_btn"
             src={LeftImg}
@@ -20,9 +20,11 @@ const CalendarMonthUI = (props: CalendarMonthUIType) => {
           />
         </button>
       </div>
-      <div className="calendar_month_block_now">{choiceCurrentMonth}월</div>
+      <div className="calendar_month_block_now">
+        {choicedCurrentYear}년 {choicedCurrentMonth}월
+      </div>
       <div className="calendar_month_block_inner_left">
-        <button type="button" onClick={() => nextMonth(currentMonth)}>
+        <button type="button" onClick={() => nextMonth(formatCurrentDate)}>
           <img
             className="calendar_month_arrow_btn"
             src={RightImg}

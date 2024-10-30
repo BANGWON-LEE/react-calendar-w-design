@@ -4,7 +4,6 @@ import { DateRangeType } from "../type/contextType";
 
 // 1. Context 생성
 
-
 export const DateRangeContext = createContext<{
   dateRange: DateRangeType;
   setDateRange: React.Dispatch<React.SetStateAction<DateRangeType>>;

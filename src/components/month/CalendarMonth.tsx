@@ -1,36 +1,37 @@
 import { useContext } from "react";
 import { MonthContext } from "../../context/MonthProvider";
-import { MonthContextType } from "../../type/contextType";
+import { DateContextType } from "../../type/contextType";
 import CalendarMonthUI from "../../view/CalendarMonthUI";
 
 const CalendarMonth = () => {
-
-
   // const initialMonth = currentDate.getMonth() + 1;
   // const [choiceMonth, setChoiceMonth] = useState<number>(0);
-  const { choiceMonth, setChoiceMonth } =
-    useContext<MonthContextType>(MonthContext);
-  
+  const { nowDate, setNowDate } = useContext<DateContextType>(MonthContext);
+
   // console.log('ui m', c)
 
-  const prevMonth = (currentMonth : Date): void => {
+  const prevMonth = (formatCurrentDate: Date): void => {
     // console.log('1 c', currentMonth)
-   const prevDate =  currentMonth.setMonth(currentMonth.getMonth()-1)
-    setChoiceMonth(prevDate);
+    const prevDate = formatCurrentDate.setMonth(
+      formatCurrentDate.getMonth() - 1
+    );
+    setNowDate(prevDate);
   };
-  
-  const nextMonth = (currentMonth : Date): void => {
+
+  const nextMonth = (formatCurrentDate: Date): void => {
     // console.log('2 c', typeof currentMonth)
-    const nextDate =  currentMonth.setMonth(currentMonth.getMonth()+1)
-    setChoiceMonth(nextDate);
+    const nextDate = formatCurrentDate.setMonth(
+      formatCurrentDate.getMonth() + 1
+    );
+    setNowDate(nextDate);
   };
-  const currentMonth = new Date(choiceMonth)
-  
+  const formatCurrentDate = new Date(nowDate);
+
   return (
     <CalendarMonthUI
       prevMonth={prevMonth}
       nextMonth={nextMonth}
-      currentMonth={currentMonth}
+      formatCurrentDate={formatCurrentDate}
     />
   );
 };

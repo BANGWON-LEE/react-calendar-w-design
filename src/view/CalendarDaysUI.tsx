@@ -1,22 +1,17 @@
 import React, { useContext } from "react";
 import { CalendarDaysUIType } from "../type";
 import { MonthContext } from "../context/MonthProvider";
-import { MonthContextType } from "../type/contextType";
+import { DateContextType } from "../type/contextType";
 // import { DateRangeContext } from "../context/DateRangeProvider";
 
 const CalendarDaysUI = (props: CalendarDaysUIType) => {
-  const { arrDayState,  dateRange, toggleDay }: CalendarDaysUIType =
-    props;
+  const { arrDayState, dateRange, toggleDay }: CalendarDaysUIType = props;
 
   // console.log("dateRange33", dateRange);
 
-  const { choiceMonth } = useContext<MonthContextType>(MonthContext);
+  const { nowDate } = useContext<DateContextType>(MonthContext);
 
-
-
-  const currentMonth = new Date(choiceMonth).getMonth();
-
-
+  const currentMonth = new Date(nowDate).getMonth();
 
   return (
     <div className="calendar_day_block">
@@ -31,32 +26,35 @@ const CalendarDaysUI = (props: CalendarDaysUIType) => {
       </div>
       {arrDayState?.slice(0, 6).map((el) => (
         <div className="calendar_day_week" key={Number(el[0])}>
-          {el.map((day: string | object ) => (
+          {el.map((day: string | object) => (
             <div key={Number(day)} className="calendar_day_inner">
               <button
                 className={`calendar_day_btn 
                     ${
                       new Date(dateRange?.end).getTime() ===
-                        new Date(day.toString()).getTime() ?
-                      "calendar_day_point_right calendar_day_point" : ''
+                      new Date(day.toString()).getTime()
+                        ? "calendar_day_point_right calendar_day_point"
+                        : ""
                     }
                     ${
                       new Date(dateRange?.start).getTime() ===
-                        new Date(day.toString()).getTime() ?
-                      "calendar_day_point_left calendar_day_point" : ''
+                      new Date(day.toString()).getTime()
+                        ? "calendar_day_point_left calendar_day_point"
+                        : ""
                     }
                     ${
                       new Date(dateRange?.start).getTime() <
                         new Date(day.toString()).getTime() &&
                       new Date(dateRange?.end).getTime() >
-                        new Date(day.toString()).getTime() ?
-                      "calendar_day_range" : ''
+                        new Date(day.toString()).getTime()
+                        ? "calendar_day_range"
+                        : ""
                     }
                     `}
                 type="button"
                 onClick={() => toggleDay(day as Date | string)}
                 disabled={
-                  Number(currentMonth) !== new Date(day.toString()).getMonth() 
+                  Number(currentMonth) !== new Date(day.toString()).getMonth()
                 }
               >
                 {(day as Date).getDate()}

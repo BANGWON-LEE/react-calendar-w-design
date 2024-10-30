@@ -1,12 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import CalendarDaysUI from "../../view/CalendarDaysUI";
-import {
-  DateRangeContextType,
-  DayContextType,
-} from "../../type/contextType";
+import { DateRangeContextType, DayContextType } from "../../type/contextType";
 import { DayContext } from "../../context/DayProvider";
 import { DateRangeContext } from "../../context/DateRangeProvider";
-import { MonthContext } from "../../context/MonthProvider";
+// import { MonthContext } from "../../context/MonthProvider";
 
 const CalendarDay = () => {
   const { allDates } = useContext<DayContextType>(DayContext);
@@ -14,12 +11,9 @@ const CalendarDay = () => {
   const { dateRange, setDateRange } =
     useContext<DateRangeContextType>(DateRangeContext);
 
-
-
-
   const toggleDay = (day: string | Date): void => {
-    console.log
-    const selectedDate = new Date(day.toString());
+    console.log;
+    const selectedDate = new Date(day.toString()) || new Date();
     console.log("Selected date:", day);
 
     setDateRange((prevDateRange: any) => {
@@ -49,8 +43,6 @@ const CalendarDay = () => {
   const divideDay = (data: Date[]) => {
     const dayArray: object[][] = [];
     const weekArray: Date[] = [new Date()];
-
-    console.log('ffff', data)
 
     let i = 0;
     for (let j = 0; j < data.length; j += 1) {
