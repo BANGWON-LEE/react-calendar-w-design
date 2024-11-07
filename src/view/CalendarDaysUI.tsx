@@ -2,7 +2,6 @@ import { useContext } from 'react'
 import { CalendarDaysUIType } from '../type'
 import { MonthContext } from '../context/MonthProvider'
 import { BtnDateRangeType, DateContextType } from '../type/contextType'
-// import { DateRangeContext } from "../context/DateRangeProvider";
 
 const CalendarDaysUI = (props: CalendarDaysUIType) => {
   const { arrDayState, dateRange, toggleDay }: CalendarDaysUIType = props
@@ -36,36 +35,36 @@ const CalendarDaysUI = (props: CalendarDaysUIType) => {
             <div key={Number(day)} className="calendar_day_inner">
               <button
                 className={`calendar_day_btn 
-                    ${
-                      new Date(dateRangeBtnValue?.end).getTime() ===
-                      new Date(day.toString()).getTime()
-                        ? 'calendar_day_point_right calendar_day_point'
-                        : ''
-                    }
-                    ${
-                      new Date(dateRangeBtnValue?.start).getTime() ===
-                      new Date(day.toString()).getTime()
-                        ? 'calendar_day_point_left calendar_day_point'
-                        : ''
-                    }
-                    ${
-                      new Date(dateRangeBtnValue?.start).getTime() <
-                        new Date(day.toString()).getTime() &&
-                      new Date(dateRangeBtnValue?.end).getTime() >
-                        new Date(day.toString()).getTime()
-                        ? 'calendar_day_range'
-                        : ''
-                    }
-                   ${
-                     new Date(dateRangeBtnValue?.start).getTime() ===
-                       new Date(dateRangeBtnValue?.end).getTime() &&
-                     new Date(dateRangeBtnValue?.start).getTime() ===
-                       new Date(day.toString()).getTime() &&
-                     new Date(dateRangeBtnValue?.end).getTime() ===
-                       new Date(day.toString()).getTime()
-                       ? 'calendar_day_point_right calendar_day_point'
-                       : ''
-                   }
+                ${
+                  new Date(dateRangeBtnValue?.end).getTime() ===
+                  new Date(day.toString()).getTime()
+                    ? 'calendar_day_point_right calendar_day_point'
+                    : ''
+                }
+                ${
+                  new Date(dateRangeBtnValue?.start).getTime() ===
+                  new Date(day.toString()).getTime()
+                    ? 'calendar_day_point_left calendar_day_point'
+                    : ''
+                }
+                ${
+                  new Date(dateRangeBtnValue?.start).getTime() <
+                    new Date(day.toString()).getTime() &&
+                  new Date(dateRangeBtnValue?.end).getTime() >
+                    new Date(day.toString()).getTime()
+                    ? 'calendar_day_range'
+                    : ''
+                }
+                ${
+                  new Date(dateRangeBtnValue?.start).getTime() ===
+                    new Date(dateRangeBtnValue?.end).getTime() &&
+                  new Date(dateRangeBtnValue?.start).getTime() ===
+                    new Date(day.toString()).getTime() &&
+                  new Date(dateRangeBtnValue?.end).getTime() ===
+                    new Date(day.toString()).getTime()
+                    ? 'calendar_day_point_right calendar_day_point'
+                    : ''
+                }
               `}
                 type="button"
                 onClick={() => toggleDay(day as Date | string)}

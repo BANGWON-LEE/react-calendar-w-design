@@ -104,12 +104,9 @@ const CalendarDay = () => {
     }
   }, [allDates])
 
-  // const btnDisabled = "opacity-25 pointer-events-none";
-
   return (
     <CalendarDaysUI
       arrDayState={arrDayState}
-      // btnDisabled={btnDisabled}
       dateRange={dateRange}
       toggleDay={toggleDay}
     />
