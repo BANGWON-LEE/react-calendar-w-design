@@ -1,27 +1,27 @@
 export interface DayInfoType {
-  start: number;
-  end: number;
+  start: number
+  end: number
 }
 export interface CalendarDaysUIType {
-  arrDayState: object[][] | string[][] | undefined;
-  dateRange: DateRangeType;
+  arrDayState: object[][] | string[][] | undefined
+  dateRange: DateRangeType
   // btnDisabled: string;
-  toggleDay: (day: string | Date) => void;
+  toggleDay: (day: string | Date) => void
 }
 
 export const initialDayInfo: DayInfoType = {
   start: 0,
   end: 0,
-};
+}
 export interface CalendarMonthUIType {
-  prevMonth: (choiceMonth: Date) => void;
-  nextMonth: (choiceMonth: Date) => void;
-  formatCurrentDate: Date;
+  prevMonth: (choiceMonth: Date) => void
+  nextMonth: (choiceMonth: Date) => void
+  formatCurrentDate: Date
 }
 
 export type OpenModalType = {
-  handleOpenModal: () => void;
-};
+  handleOpenModal: () => void
+}
 
 // export interface DateRangeType {
 //   setDateRange: (prevDateRange: Date | number) => void;
@@ -29,6 +29,8 @@ export type OpenModalType = {
 // }
 
 export interface DateRangeType {
-  start: string | Date | number;
-  end: string | Date | number;
+  start: string | Date
+  end: string | Date
+  // start: string | Date | number;
+  // end: string | Date | number;
 }
