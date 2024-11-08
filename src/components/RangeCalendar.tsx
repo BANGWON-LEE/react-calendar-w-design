@@ -1,4 +1,4 @@
-import { useContext, useEffect, useMemo } from 'react'
+import { useContext, useEffect } from 'react'
 import CalendarMonth from './month/CalendarMonth'
 import CalendarDay from './dates/CalendarDay'
 import { MonthContext } from '../context/MonthProvider'
@@ -17,7 +17,6 @@ const RangeCalendar = () => {
   const { allDates, setAllDates } = useContext<DayContextType>(DayContext)
 
   const currentDate = new Date(nowDate)
-  // console.log('현재', currentDate)
 
   // 선택한 달의 첫 날 (예 : 7월을 선택했을 경우 7월 1일을 가져옴)
 

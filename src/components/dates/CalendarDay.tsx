@@ -18,45 +18,33 @@ const CalendarDay = () => {
     // 20241107 날자 조건문 추가하면 됨.
     setDateRange((prevDateRange: any) => {
       console.log('Previous date range:', prevDateRange)
-      if (prevDateRange.start === '') {
+      if (prevDateRange.start === '' || prevDateRange.end !== '') {
         console.log('are you start?')
         return {
           start: selectedDate,
           end: '',
         }
-      } else if (prevDateRange.end === '') {
+      } else if (prevDateRange.end === '' || prevDateRange.start !== '') {
         return {
           ...prevDateRange,
           end: selectedDate,
         }
-      } else if (
-        prevDateRange.end !== '' &&
-        prevDateRange.start !== '' &&
-        prevDateRange.start.getTime() <= prevDateRange.end?.getTime()
-      ) {
-        console.log('check 26 line')
+      } else if (selectedDate > prevDateRange.end) {
         return {
-          ...prevDateRange,
           start: selectedDate,
+          end: '',
         }
-      } else if (
-        prevDateRange.end !== '' &&
-        prevDateRange.start !== '' &&
-        prevDateRange.start <= selectedDate
-      ) {
-        console.log('are you end?')
+      } else if (prevDateRange.start === selectedDate) {
         return {
-          ...prevDateRange,
           start: selectedDate,
+          end: selectedDate,
+        }
+      } else if (prevDateRange.start > selectedDate) {
+        return {
+          start: selectedDate,
+          end: '',
         }
       }
-      // else {
-      //   // 다른 조건이나 기본값 처리
-      //   return {
-      //     start: selectedDate,
-      //     end: new Date(0), // 또는 다른 적절한 초기값
-      //   }
-      // }
     })
   }
 
