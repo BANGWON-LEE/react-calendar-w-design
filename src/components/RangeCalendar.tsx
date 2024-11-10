@@ -43,7 +43,6 @@ const RangeCalendar = () => {
   const firstDayOfNextMonth = new Date(nextMonthYear, nextMonth, 1)
 
   // 전달의 마지막 날을 구합니다.
-  console.log('전달 마지막 날', firstDay)
   const lastDayOfPreviousMonth = firstDay.getTime() - 1
 
   // // 전달의 마지막 주의 일요일을 구합니다.
@@ -56,15 +55,6 @@ const RangeCalendar = () => {
   // 다음 달의 둘째 주의 토요일을 구합니다.
   const secondSaturdayOfNextMonth = firstDayOfNextMonth
   secondSaturdayOfNextMonth.setDate(secondSaturdayOfNextMonth.getDate() + 7) // 첫째 주를 건너뛰기 위해 7일을 추가합니다.
-
-  // 둘째 주 토요일을 구함, getDay() !== 6이 아닌 0인 이유는 while문은 true일 때 break 하기 때문에.
-  // while (secondSaturdayOfNextMonth.getDay() !== 0) {
-  //   secondSaturdayOfNextMonth.setDate(secondSaturdayOfNextMonth.getDate() + 1);
-  // }
-
-  // console.log("토토", secondSaturdayOfNextMonth);
-
-  // // context로 전역처리 할 곳
 
   useEffect(() => {
     const standardDate = new Date(lastSundayOfPreviousMonth)
