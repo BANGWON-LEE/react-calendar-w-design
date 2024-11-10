@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import { DateRangeContextType } from '../../type/contextType'
 // import {DateRange}
 import { DateRangeContext } from '../../context/DateRangeProvider'
