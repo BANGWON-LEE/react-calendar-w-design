@@ -16,28 +16,27 @@ const CalendarDay = () => {
 
     // 20241107 날자 조건문 추가하면 됨.
     setDateRange((prevDateRange: any) => {
-      console.log('Previous date range:', prevDateRange.start > selectedDate)
+      // console.log('Previous date range:', prevDateRange.start > selectedDate)
       if (prevDateRange.start === '' || prevDateRange.end !== '') {
-        console.log('are you start?')
+        // console.log('are you start?')
         return {
           start: selectedDate,
           end: '',
         }
       } else if (prevDateRange.start > selectedDate) {
-        console.log('selectedDate is not big than start')
+        // console.log('selectedDate is not big than start')
         return {
           start: selectedDate,
           end: prevDateRange.start,
         }
       } else if (prevDateRange.end === '' || prevDateRange.start !== '') {
-        console.log('did you choice end?')
+        // console.log('did you choice end?')
         return {
           ...prevDateRange,
           end: selectedDate,
         }
       } else if (selectedDate > prevDateRange.end) {
-        console.log('selectedDate is not big than end')
-
+        // console.log('selectedDate is not big than end')
         return {
           start: selectedDate,
           end: '',
