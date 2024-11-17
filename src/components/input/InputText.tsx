@@ -12,7 +12,7 @@ const InputText = () => {
       ? formatDate(new Date(dateRange.start))
       : '날짜를 선택하세요.'
   const endDate =
-    dateRange.end !== '' ? ' ~ ' + formatDate(new Date(dateRange.end)) : ''
+    dateRange.end !== '' ? ' ~  ' + formatDate(new Date(dateRange.end)) : ''
 
   return (
     <input
