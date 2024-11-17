@@ -3,7 +3,6 @@ import CalendarDaysUI from '../../view/CalendarDaysUI'
 import { DateRangeContextType, DayContextType } from '../../type/contextType'
 import { DayContext } from '../../context/DayProvider'
 import { DateRangeContext } from '../../context/DateRangeProvider'
-// import { MonthContext } from "../../context/MonthProvider";
 
 const CalendarDay = () => {
   const { allDates } = useContext<DayContextType>(DayContext)
