@@ -3,7 +3,7 @@ export interface DayInfoType {
   end: number
 }
 export interface CalendarDaysUIType {
-  arrDayState: object[][] | string[][] | undefined
+  arrDayState: undefined | object[][] | string[][]
   dateRange: DateRangeType
   // btnDisabled: string;
   toggleDay: (day: string | Date) => void
@@ -23,14 +23,12 @@ export type OpenModalType = {
   handleOpenModal: () => void
 }
 
-// export interface DateRangeType {
-//   setDateRange: (prevDateRange: Date | number) => void;
-//   // setDateRange: React.Dispatch<React.SetStateAction<number | Date>>;
-// }
-
 export interface DateRangeType {
   start: string | Date
   end: string | Date
-  // start: string | Date | number;
-  // end: string | Date | number;
+}
+
+export interface BtnType {
+  action: () => void
+  text: string
 }
