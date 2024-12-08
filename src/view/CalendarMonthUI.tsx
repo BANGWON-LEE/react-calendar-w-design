@@ -1,13 +1,18 @@
-import LeftImg from "../assets/calendar_left.png";
-import RightImg from "../assets/calendar_right.png";
-import { CalendarMonthUIType } from "../type";
+import LeftImg from '../assets/calendar_left.png'
+import RightImg from '../assets/calendar_right.png'
+import { CalendarMonthUIType } from '../type'
+import monthObj from '../data/month.json'
 
 const CalendarMonthUI = (props: CalendarMonthUIType) => {
-  const { prevMonth, nextMonth, formatCurrentDate } = props;
+  const { prevMonth, nextMonth, formatCurrentDate } = props
 
-  const choicedCurrentMonth = formatCurrentDate.getMonth() + 1;
-  const choicedCurrentYear = formatCurrentDate.getFullYear();
-  // console.log('fefef', choicedCurrentMonth)
+  const choicedCurrentMonth = formatCurrentDate.getMonth() + 1
+  const choicedCurrentYear = formatCurrentDate.getFullYear()
+
+  type MonthKey = keyof typeof monthObj
+  const textTypeChoicedCurrentMonth = choicedCurrentMonth.toString() as MonthKey // 선택하는 문자열이 1~12까지임을 단언함.
+
+  const nowMonth = monthObj[textTypeChoicedCurrentMonth] // json에서 import한 데이터를 필터링 하여 가져올 예정
 
   return (
     <div className="calendar_month_block">
@@ -21,7 +26,7 @@ const CalendarMonthUI = (props: CalendarMonthUIType) => {
         </button>
       </div>
       <div className="calendar_month_block_now">
-        {choicedCurrentYear}년 {choicedCurrentMonth}월
+        {choicedCurrentYear} {nowMonth}
       </div>
       <div className="calendar_month_block_inner_left">
         <button type="button" onClick={() => nextMonth(formatCurrentDate)}>
@@ -33,7 +38,7 @@ const CalendarMonthUI = (props: CalendarMonthUIType) => {
         </button>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default CalendarMonthUI;
+export default CalendarMonthUI
