@@ -9,6 +9,7 @@ import {
 } from '../type/contextType'
 import { DayContext } from '../context/DayProvider'
 import { openModalContext } from '../context/input-btn/OpenModalProvider'
+import GrayBtn from './button/GrayBtn'
 
 const RangeCalendar = () => {
   // context api로 전역처리 할 예정
@@ -79,7 +80,7 @@ const RangeCalendar = () => {
   const { openModal, setOpenModal } =
     useContext<RangeBtnContextType>(openModalContext)
 
-  const onSubmit = () => {
+  const onClose = () => {
     setOpenModal(!openModal)
   }
 
@@ -91,9 +92,7 @@ const RangeCalendar = () => {
           <CalendarDay />
         </div>
         <div className="calendar_close_block">
-          <button className="calendar_close_btn" onClick={() => onSubmit()}>
-            Ok
-          </button>
+          <GrayBtn action={onClose} text={'Close'} />
         </div>
       </div>
     </div>
