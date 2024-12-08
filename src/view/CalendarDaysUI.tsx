@@ -18,16 +18,14 @@ const CalendarDaysUI = (props: CalendarDaysUIType) => {
           end: '',
         }
 
+  const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+
   return (
     <div className="calendar_day_block">
       <div className="calendar_day_week">
-        <div>일</div>
-        <div>월</div>
-        <div>화</div>
-        <div>수</div>
-        <div>목</div>
-        <div>금</div>
-        <div>토</div>
+        {days.map(day => (
+          <div key={day}>{day}</div>
+        ))}
       </div>
       {arrDayState?.slice(0, 6).map(el => (
         <div className="calendar_day_week" key={Number(el[0])}>
