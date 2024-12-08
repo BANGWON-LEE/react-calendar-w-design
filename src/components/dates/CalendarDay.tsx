@@ -10,9 +10,10 @@ const CalendarDay = () => {
   const { dateRange, setDateRange } =
     useContext<DateRangeContextType>(DateRangeContext)
 
+  const dateArray: Date[] = allDates.filter(item => item instanceof Date)
+
   const toggleDay = (day: string | Date): void => {
     const selectedDate = new Date(day.toString()) || new Date()
-    console.log('Selected date:', day)
 
     // 20241107 날자 조건문 추가하면 됨.
     setDateRange((prevDateRange: any) => {
@@ -50,8 +51,6 @@ const CalendarDay = () => {
     })
   }
 
-  const [arrDayState, setArrDayState] = useState<object[][] | string[][]>()
-
   const divideDay = (data: Date[]) => {
     const dayArray: object[][] = []
     const weekArray: Date[] = [new Date()]
@@ -84,15 +83,11 @@ const CalendarDay = () => {
         }
       }
     }
-    setArrDayState(dayArray)
+
+    return dayArray
   }
 
-  useEffect(() => {
-    if (allDates !== undefined) {
-      const dateArray: Date[] = allDates.filter(item => item instanceof Date)
-      divideDay(dateArray)
-    }
-  }, [allDates])
+  const arrDayState: object[][] | string[][] = divideDay(dateArray)
 
   return (
     <CalendarDaysUI
