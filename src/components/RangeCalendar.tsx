@@ -10,6 +10,7 @@ import {
 import { DayContext } from '../context/DayProvider'
 import { openModalContext } from '../context/input-btn/OpenModalProvider'
 import GrayBtn from './button/GrayBtn'
+import CalendarTime from './time/CalendarTime'
 
 const RangeCalendar = () => {
   // context api로 전역처리 할 예정
@@ -87,12 +88,15 @@ const RangeCalendar = () => {
   return (
     <div className="modal">
       <div className="calendar_block">
-        <div className="calendar_main_block">
-          <CalendarMonth />
-          <CalendarDay />
+        <div className="calendar_block_inner">
+          <div className="calendar_main_block">
+            <CalendarMonth />
+            <CalendarDay />
+          </div>
+          <CalendarTime />
         </div>
         <div className="calendar_close_block">
-          <GrayBtn action={onClose} text={'Close'} />
+          <GrayBtn action={onClose} text={'OK'} />
         </div>
       </div>
     </div>
