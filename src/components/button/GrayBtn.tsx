@@ -5,7 +5,7 @@ export default function GrayBtn(props: BtnType) {
   const { action, text } = props
 
   return (
-    <button className="calendar_close_btn" onClick={() => action()}>
+    <button className="calendar_gray_btn" onClick={() => action()}>
       {text}
     </button>
   )
