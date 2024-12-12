@@ -3,6 +3,10 @@
   height: 30%;
 }
 
+.calendar_block_inner {
+  display: flex;
+}
+
 /* .calendar_container {
   width: 100%;
   height: auto;
@@ -76,4 +80,41 @@
 
 .calendar_day_range {
   background-color: #f59e5b;
+}
+
+.calendar_time_container {
+  display: grid;
+  width: 190px;
+  height: 320px;
+  grid-template-rows: 0.18fr auto; /* 첫 번째 행은 100px, 두 번째 행은 남은 공간 */
+  gap: 10px; /* 블록 사이의 간격 */
+}
+
+.calendar_time_title_block {
+  margin: 10% auto;
+}
+
+.calendar_time_title_text {
+  height: 100%;
+  align-content: center;
+}
+
+.calendar_time_container_inner {
+  display: flex;
+  justify-content: space-between;
+}
+
+.time_block {
+  width: 25%;
+  height: 250px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: var(--ant-color-text-tertiary) transparent;
+}
+
+.time_cell {
+  margin-bottom: 5px;
+  padding-left: 8px;
+  padding-top: 0px;
 }
