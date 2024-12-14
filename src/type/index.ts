@@ -2,11 +2,17 @@ export interface DayInfoType {
   start: number
   end: number
 }
-export interface CalendarDaysUIType {
+export type CalendarDaysUIType = {
   arrDayState: undefined | object[][] | string[][]
   dateRange: DateRangeType
   // btnDisabled: string;
   toggleDay: (day: string | Date) => void
+}
+
+export type CalendarTimeUIType = {
+  dateRange: DateRangeType
+  // btnDisabled: string;
+  toggleTime: (index: number, value: string) => void
 }
 
 export const initialDayInfo: DayInfoType = {

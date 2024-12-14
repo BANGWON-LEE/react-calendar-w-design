@@ -15,37 +15,40 @@ const CalendarDay = () => {
   const toggleDay = (day: string | Date): void => {
     const selectedDate = new Date(day.toString()) || new Date()
 
+    const startDate = new Date(selectedDate.setHours(0, 0, 0, 0))
+    const endDate = new Date(selectedDate.setHours(23, 59, 59, 0))
+
     // 20241107 날자 조건문 추가하면 됨.
     setDateRange((prevDateRange: any) => {
       // console.log('Previous date range:', prevDateRange.start > selectedDate)
       if (prevDateRange.start === '' || prevDateRange.end !== '') {
         // console.log('are you start?')
         return {
-          start: selectedDate,
+          start: startDate,
           end: '',
         }
       } else if (prevDateRange.start > selectedDate) {
         // console.log('selectedDate is not big than start')
         return {
-          start: selectedDate,
+          start: startDate,
           end: prevDateRange.start,
         }
       } else if (prevDateRange.end === '' || prevDateRange.start !== '') {
         // console.log('did you choice end?')
         return {
           ...prevDateRange,
-          end: selectedDate,
+          end: endDate,
         }
       } else if (selectedDate > prevDateRange.end) {
         // console.log('selectedDate is not big than end')
         return {
-          start: selectedDate,
+          start: startDate,
           end: '',
         }
       } else if (prevDateRange.start === selectedDate) {
         return {
-          start: selectedDate,
-          end: selectedDate,
+          start: startDate,
+          end: endDate,
         }
       }
     })
@@ -86,6 +89,8 @@ const CalendarDay = () => {
 
     return dayArray
   }
+
+  console.log('dateRange', dateRange)
 
   const arrDayState: object[][] | string[][] = divideDay(dateArray)
 

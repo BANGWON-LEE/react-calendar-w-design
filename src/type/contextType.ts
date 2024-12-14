@@ -14,8 +14,8 @@ export interface RangeBtnContextType {
 }
 
 export interface BtnDateRangeType {
-  start: Date | string
-  end: Date | string
+  start: Date | ''
+  end: Date | ''
 }
 
 // export interface DateRangeType {

@@ -19,6 +19,8 @@ const CalendarDaysUI = (props: CalendarDaysUIType) => {
         }
 
   const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+  const oneDayInMs = 24 * 60 * 60 * 1000
+  const startDatePoint = oneDayInMs - 1000
 
   return (
     <div className="calendar_day_block">
@@ -34,19 +36,19 @@ const CalendarDaysUI = (props: CalendarDaysUIType) => {
               <button
                 className={`calendar_day_btn 
                 ${
-                  new Date(dateRangeBtnValue?.end).getTime() ===
+                  new Date(dateRangeBtnValue?.end).setHours(23, 59, 59) ===
                   new Date(day.toString()).getTime()
                     ? 'calendar_day_point_right calendar_day_point'
                     : ''
                 }
                 ${
-                  new Date(dateRangeBtnValue?.start).getTime() ===
-                  new Date(day.toString()).getTime()
+                  new Date(dateRangeBtnValue?.start).setHours(0, 0, 0) ===
+                  new Date(day.toString()).getTime() - startDatePoint
                     ? 'calendar_day_point_left calendar_day_point'
                     : ''
                 }
                 ${
-                  new Date(dateRangeBtnValue?.start).getTime() <
+                  new Date(dateRangeBtnValue?.start).getTime() + oneDayInMs <
                     new Date(day.toString()).getTime() &&
                   new Date(dateRangeBtnValue?.end).getTime() >
                     new Date(day.toString()).getTime()
