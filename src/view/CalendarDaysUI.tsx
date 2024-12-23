@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { CalendarDaysUIType } from '../type'
 import { MonthContext } from '../context/MonthProvider'
-import { BtnDateRangeType, DateContextType } from '../type/contextType'
+import { DateContextType } from '../type/contextType'
 
 const CalendarDaysUI = (props: CalendarDaysUIType) => {
   const { arrDayState, dateRange, toggleDay }: CalendarDaysUIType = props

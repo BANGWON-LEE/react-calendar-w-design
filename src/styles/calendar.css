@@ -114,7 +114,12 @@
 }
 
 .time_cell {
-  margin-bottom: 5px;
-  padding-left: 8px;
-  padding-top: 0px;
+  margin-bottom: 7px;
+  /* padding-left: 8px;
+  padding-top: 0px; */
+  padding: 3.4px;
+}
+
+.calendar_time_choiced_block {
+  border: 1px solid #87cefa;
 }

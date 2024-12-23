@@ -18,47 +18,51 @@ const CalendarTimeUI = (props: CalendarTimeUIType) => {
 
   // inde 0 is hour, index 1 is minute, index 2 is second
 
+  const dateRangeStart = new Date(dateRange.start)
+  const dateRangeEnd = new Date(dateRange.end)
+
   return (
     <div className="calendar_time_container">
       <div className="calendar_time_title_block">
         <p className="calendar_time_title_text">
           {/* {currentTime[0]} : {currentTime[1]} : {currentTime[2]} */}
           {dateRange.end === ''
-            ? checkIsNaN(
-                new Date(dateRange.start).getHours().toString().padStart(2, '0')
-              )
-            : checkIsNaN(
-                new Date(dateRange.end).getHours().toString().padStart(2, '0')
-              )}
+            ? checkIsNaN(dateRangeStart.getHours().toString().padStart(2, '0'))
+            : checkIsNaN(dateRangeEnd.getHours().toString().padStart(2, '0'))}
           :
           {dateRange.end === ''
             ? checkIsNaN(
-                new Date(dateRange.start)
-                  .getMinutes()
-                  .toString()
-                  .padStart(2, '0')
+                dateRangeStart.getMinutes().toString().padStart(2, '0')
               )
-            : checkIsNaN(
-                new Date(dateRange.end).getMinutes().toString().padStart(2, '0')
-              )}
+            : checkIsNaN(dateRangeEnd.getMinutes().toString().padStart(2, '0'))}
           :
           {dateRange.end === ''
             ? checkIsNaN(
-                new Date(dateRange.start)
-                  .getSeconds()
-                  .toString()
-                  .padStart(2, '0')
+                dateRangeStart.getSeconds().toString().padStart(2, '0')
               )
-            : checkIsNaN(
-                new Date(dateRange.end).getSeconds().toString().padStart(2, '0')
-              )}
+            : checkIsNaN(dateRangeEnd.getSeconds().toString().padStart(2, '0'))}
         </p>
       </div>
       <div className="calendar_time_container_inner">
         <div className="time_block">
           {hours.map((hour, index) => (
             <button
-              className="time_cell"
+              className={`time_cell ${
+                dateRange.start !== '' &&
+                dateRange.end === '' &&
+                checkIsNaN(
+                  dateRangeStart.getHours().toString().padStart(2, '0')
+                ) === hour &&
+                'calendar_time_choiced_block'
+              }
+              ${
+                dateRange.end !== '' &&
+                checkIsNaN(
+                  dateRangeEnd.getHours().toString().padStart(2, '0')
+                ) === hour &&
+                'calendar_time_choiced_block'
+              }
+              `}
               key={'hour-' + hour}
               onClick={() => toggleTime(0, hour)}
             >
@@ -69,7 +73,22 @@ const CalendarTimeUI = (props: CalendarTimeUIType) => {
         <div className="time_block">
           {minuteAndSecond.map((minute, index) => (
             <button
-              className="time_cell"
+              className={`time_cell ${
+                dateRange.start !== '' &&
+                dateRange.end === '' &&
+                checkIsNaN(
+                  dateRangeStart.getMinutes().toString().padStart(2, '0')
+                ) === minute &&
+                'calendar_time_choiced_block'
+              }
+            ${
+              dateRange.end !== '' &&
+              checkIsNaN(
+                dateRangeEnd.getMinutes().toString().padStart(2, '0')
+              ) === minute &&
+              'calendar_time_choiced_block'
+            }
+            `}
               key={'hour-' + minute}
               onClick={() => toggleTime(1, minute)}
             >
@@ -80,7 +99,22 @@ const CalendarTimeUI = (props: CalendarTimeUIType) => {
         <div className="time_block">
           {minuteAndSecond.map((second, index) => (
             <button
-              className="time_cell"
+              className={`time_cell ${
+                dateRange.start !== '' &&
+                dateRange.end === '' &&
+                checkIsNaN(
+                  dateRangeStart.getSeconds().toString().padStart(2, '0')
+                ) === second &&
+                'calendar_time_choiced_block'
+              }
+            ${
+              dateRange.end !== '' &&
+              checkIsNaN(
+                dateRangeEnd.getSeconds().toString().padStart(2, '0')
+              ) === second &&
+              'calendar_time_choiced_block'
+            }
+            `}
               key={'hour-' + second}
               onClick={() => toggleTime(2, second)}
             >
