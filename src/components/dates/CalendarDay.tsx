@@ -1,8 +1,7 @@
 import { useContext } from 'react'
 import CalendarDaysUI from '../../view/CalendarDaysUI'
-import { DateRangeContextType, DayContextType } from '../../type/contextType'
+import { DayContextType } from '../../type/contextType'
 import { DayContext } from '../../context/DayProvider'
-import { DateRangeContext } from '../../context/DateRangeProvider'
 
 const CalendarDay = () => {
   const { allDates } = useContext<DayContextType>(DayContext)
