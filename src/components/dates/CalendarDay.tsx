@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext } from 'react'
 import CalendarDaysUI from '../../view/CalendarDaysUI'
 import { DateRangeContextType, DayContextType } from '../../type/contextType'
 import { DayContext } from '../../context/DayProvider'
@@ -7,52 +7,7 @@ import { DateRangeContext } from '../../context/DateRangeProvider'
 const CalendarDay = () => {
   const { allDates } = useContext<DayContextType>(DayContext)
 
-  const { dateRange, setDateRange } =
-    useContext<DateRangeContextType>(DateRangeContext)
-
   const dateArray: Date[] = allDates.filter(item => item instanceof Date)
-
-  const toggleDay = (day: string | Date): void => {
-    const selectedDate = new Date(day.toString()) || new Date()
-
-    const startDate = new Date(selectedDate.setHours(0, 0, 0, 0))
-    const endDate = new Date(selectedDate.setHours(23, 59, 59, 0))
-
-    // 20241107 날자 조건문 추가하면 됨.
-    setDateRange((prevDateRange: any) => {
-      // console.log('Previous date range:', prevDateRange.start > selectedDate)
-      if (prevDateRange.start === '' || prevDateRange.end !== '') {
-        // console.log('are you start?')
-        return {
-          start: startDate,
-          end: '',
-        }
-      } else if (prevDateRange.start > selectedDate) {
-        // console.log('selectedDate is not big than start')
-        return {
-          start: startDate,
-          end: prevDateRange.start,
-        }
-      } else if (prevDateRange.end === '' || prevDateRange.start !== '') {
-        // console.log('did you choice end?')
-        return {
-          ...prevDateRange,
-          end: endDate,
-        }
-      } else if (selectedDate > prevDateRange.end) {
-        // console.log('selectedDate is not big than end')
-        return {
-          start: startDate,
-          end: '',
-        }
-      } else if (prevDateRange.start === selectedDate) {
-        return {
-          start: startDate,
-          end: endDate,
-        }
-      }
-    })
-  }
 
   const divideDay = (data: Date[]) => {
     const dayArray: object[][] = []
@@ -60,7 +15,7 @@ const CalendarDay = () => {
 
     let i = 0
     for (let j = 0; j < data.length; j += 1) {
-      // console.log('ddd', data[j]);
+      console.log('ddd', data[j])
       if (data[j] !== undefined) {
         const dayType: string = data[j].getDay().toString()
         const dayValue: Date = data[j]
@@ -80,7 +35,6 @@ const CalendarDay = () => {
           weekArray[5] = dayValue
         } else if (dayType === '6') {
           weekArray[6] = dayValue
-
           dayArray[i] = [...weekArray]
           i += 1
         }
@@ -90,17 +44,9 @@ const CalendarDay = () => {
     return dayArray
   }
 
-  console.log('dateRange', dateRange)
-
   const arrDayState: object[][] | string[][] = divideDay(dateArray)
 
-  return (
-    <CalendarDaysUI
-      arrDayState={arrDayState}
-      dateRange={dateRange}
-      toggleDay={toggleDay}
-    />
-  )
+  return <CalendarDaysUI arrDayState={arrDayState} />
 }
 
 export default CalendarDay

@@ -1,11 +1,21 @@
 import { useContext } from 'react'
 import { CalendarDaysUIType } from '../type'
 import { MonthContext } from '../context/MonthProvider'
-import { DateContextType } from '../type/contextType'
+import {
+  DateContextType,
+  DateRangeContextType,
+  setDateRangeType,
+} from '../type/contextType'
+import { DateRangeContext } from '../context/DateRangeProvider'
+import toggleDay from '../components/dates/toggleDay'
 
 const CalendarDaysUI = (props: CalendarDaysUIType) => {
-  const { arrDayState, dateRange, toggleDay }: CalendarDaysUIType = props
+  const { arrDayState }: CalendarDaysUIType = props
 
+  const { dateRange, setDateRange } =
+    useContext<DateRangeContextType>(DateRangeContext)
+
+  const selectedDay = toggleDay
   const { nowDate } = useContext<DateContextType>(MonthContext)
 
   const currentMonth = new Date(nowDate).getMonth()
@@ -67,7 +77,7 @@ const CalendarDaysUI = (props: CalendarDaysUIType) => {
                 }
               `}
                 type="button"
-                onClick={() => toggleDay(day as Date | string)}
+                onClick={() => toggleDay(day as Date | string, setDateRange)}
                 disabled={
                   Number(currentMonth) !== new Date(day.toString()).getMonth()
                 }

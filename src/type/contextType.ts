@@ -14,8 +14,8 @@ export interface RangeBtnContextType {
 }
 
 export interface BtnDateRangeType {
-  start: Date | ''
-  end: Date | ''
+  start: Date | '' | number | undefined
+  end: Date | '' | number | undefined
 }
 
 // export interface DateRangeType {
@@ -25,5 +25,9 @@ export interface BtnDateRangeType {
 
 export interface DateRangeContextType {
   dateRange: BtnDateRangeType
+  setDateRange: React.Dispatch<React.SetStateAction<BtnDateRangeType>>
+}
+
+export interface setDateRangeType {
   setDateRange: React.Dispatch<React.SetStateAction<BtnDateRangeType>>
 }
