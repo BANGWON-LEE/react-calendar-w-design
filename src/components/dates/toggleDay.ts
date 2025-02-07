@@ -13,8 +13,6 @@ export default function toggleDay(
   const endDate: Date = new Date(selectedDate.setHours(23, 59, 59, 0))
 
   setDateRange((prevDateRange): any => {
-    console.log('테스트1', prevDateRange)
-
     for (const { check, determine } of getDayRangeList(
       prevDateRange,
       selectedSecondDate,
