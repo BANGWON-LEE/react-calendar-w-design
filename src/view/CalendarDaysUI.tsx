@@ -1,11 +1,7 @@
 import { useContext } from 'react'
 import { CalendarDaysUIType } from '../type'
 import { MonthContext } from '../context/MonthProvider'
-import {
-  DateContextType,
-  DateRangeContextType,
-  setDateRangeType,
-} from '../type/contextType'
+import { DateContextType, DateRangeContextType } from '../type/contextType'
 import { DateRangeContext } from '../context/DateRangeProvider'
 import toggleDay from '../components/dates/toggleDay'
 
@@ -15,7 +11,6 @@ const CalendarDaysUI = (props: CalendarDaysUIType) => {
   const { dateRange, setDateRange } =
     useContext<DateRangeContextType>(DateRangeContext)
 
-  const selectedDay = toggleDay
   const { nowDate } = useContext<DateContextType>(MonthContext)
 
   const currentMonth = new Date(nowDate).getMonth()
