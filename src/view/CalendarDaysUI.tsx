@@ -20,7 +20,7 @@ const CalendarDaysUI = (props: CalendarDaysUIType) => {
 
   const currentMonth = new Date(nowDate).getMonth()
 
-  let dateRangeBtnValue =
+  let dateRangeBtnValue: any =
     dateRange?.start !== '' || dateRange?.end !== ''
       ? dateRange
       : {
