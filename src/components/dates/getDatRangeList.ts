@@ -1,16 +1,4 @@
-export interface prevDateRangeType {
-  start: Date | '' | number
-  end: Date | '' | number
-}
-
-export type dateRangeReturnType = {
-  start: number | '' | Date | undefined
-  end: number | '' | Date | undefined
-}
-
-export interface endDateType {
-  endDate: Date | string
-}
+import { prevDateRangeType } from './toggleDayType'
 
 const checkInitialRagne = (prevDateRange: prevDateRangeType) =>
   prevDateRange.start === '' || prevDateRange.end !== ''
