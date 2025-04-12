@@ -4,6 +4,7 @@ export interface DayInfoType {
 }
 export type CalendarDaysUIType = {
   arrDayState: undefined | object[][] | string[][]
+  type: string
   // dateRange: DateRangeType
   // btnDisabled: string;
   // toggleDay: (day: string | Date) => void

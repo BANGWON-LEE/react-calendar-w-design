@@ -1,11 +1,11 @@
 import React, { useContext } from 'react'
-import RangeCalendar from '../calendar/RangeCalendar'
 import DateInputMain from '../input/DateInputMain'
 import { RangeBtnContextType } from '../../type/contextType'
 import { openModalContext } from '../../context/input-btn/OpenModalProvider'
 import { CalendarCheckTimeComponentType } from '../../type/propsType'
+import DatePickerCalendar from '../calendar/DatePickerCalendar'
 
-const Range = (props: CalendarCheckTimeComponentType) => {
+const DatePicker = (props: CalendarCheckTimeComponentType) => {
   const { time } = props
 
   const { openModal, setOpenModal } =
@@ -13,10 +13,10 @@ const Range = (props: CalendarCheckTimeComponentType) => {
 
   return (
     <>
-      {openModal === true && <RangeCalendar time={time} />}
+      {openModal === true && <DatePickerCalendar time={time} />}
       <DateInputMain />
     </>
   )
 }
 
-export default Range
+export default DatePicker

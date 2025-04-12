@@ -1,7 +1,7 @@
 import { BtnDateRangeType } from '../../type/contextType'
-import getDayRangeList from './getDatRangeList'
+import { getDayList, getDayRangeList } from './getDatRangeList'
 
-export default function toggleDay(
+export function rangeToggleDay(
   day: string | Date,
   setDateRange: React.Dispatch<React.SetStateAction<BtnDateRangeType>>
 ): void {
@@ -19,6 +19,21 @@ export default function toggleDay(
       startDate,
       endDate
     )) {
+      if (check) return determine
+    }
+  })
+}
+
+export function toggleDay(
+  day: string | Date,
+  setDateRange: React.Dispatch<React.SetStateAction<BtnDateRangeType>>
+): void {
+  const selectedDate: Date = new Date(day.toString()) || new Date()
+
+  const startDate: Date = new Date(selectedDate.setHours(0, 0, 0, 0))
+
+  setDateRange((prevDateRange): any => {
+    for (const { check, determine } of getDayList(prevDateRange, startDate)) {
       if (check) return determine
     }
   })

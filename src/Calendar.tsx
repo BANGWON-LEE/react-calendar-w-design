@@ -1,11 +1,20 @@
-import Range from "./components/kind/Range";
+import DatePicker from './components/kind/DatePicker'
+import Range from './components/kind/Range'
+import { CalendarMainPropsType } from './type/propsType'
 
-const Calendar = () => {
-  return (
-    <div>
-      <Range />
-    </div>
-  );
-};
+const Calendar = (props: CalendarMainPropsType) => {
+  const { type, time } = props
 
-export default Calendar;
+  const selectionCalendarType = function () {
+    switch (type) {
+      case 'range':
+        return <Range time={time} />
+      case 'datePicker':
+        return <DatePicker time={time} />
+    }
+  }
+
+  return <div>{selectionCalendarType()}</div>
+}
+
+export default Calendar

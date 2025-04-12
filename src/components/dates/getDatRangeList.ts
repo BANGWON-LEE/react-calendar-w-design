@@ -55,7 +55,7 @@ function determineStartAndEnd(
   return { start: starDate, end: endDate }
 }
 
-export default function getDayRangeList(
+export function getDayRangeList(
   prevDateRange: any,
   selectedSecondDate: number,
   startDate: Date,
@@ -81,6 +81,17 @@ export default function getDayRangeList(
     {
       check: checkSameStartAndEnd(prevDateRange, selectedSecondDate),
       determine: determineStartAndEnd(startDate, endDate),
+    },
+  ]
+
+  return dayRangeLsit
+}
+
+export function getDayList(prevDateRange: any, startDate: Date) {
+  const dayRangeLsit = [
+    {
+      check: checkInitialRagne(prevDateRange),
+      determine: determineInitialRange(startDate),
     },
   ]
 
