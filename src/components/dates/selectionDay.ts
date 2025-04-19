@@ -1,5 +1,5 @@
 import { BtnDateRangeType } from '../../type/contextType'
-import { getDayList, getDayRangeList } from './getDatRangeList'
+import { getDayRangeList } from './getDatRangeList'
 
 export function rangeToggleDay(
   day: string | Date,
@@ -31,10 +31,10 @@ export function toggleDay(
   const selectedDate: Date = new Date(day.toString()) || new Date()
 
   const startDate: Date = new Date(selectedDate.setHours(0, 0, 0, 0))
+  const endDate: Date = new Date(selectedDate.setHours(23, 59, 59, 0))
 
-  setDateRange((prevDateRange): any => {
-    for (const { check, determine } of getDayList(prevDateRange, startDate)) {
-      if (check) return determine
-    }
+  setDateRange({
+    start: startDate,
+    end: endDate,
   })
 }
