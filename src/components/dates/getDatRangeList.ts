@@ -8,6 +8,7 @@ function determineInitialRange(startDate: Date): prevDateRangeType {
 }
 
 const checkEarlyThanStartDay = (
+  // range에서 날짜 클릭할 때 2번째 클릭 날짜가 시작 날짜보다(첫번째 클릭 날짜보다 더 이전 날짜일 때 사용
   prevDateRange: prevDateRangeType,
   selectedSecondDate: number
 ) =>
@@ -38,6 +39,7 @@ const checkLateThanEndDay = (
   new Date(selectedSecondDate).getTime() > new Date(prevDateRange.end).getTime()
 
 function determineLateThanEndDay(starDate: Date): prevDateRangeType {
+  // 두번째 클릭한 날짜가 즉, endDate가 이미 클릭되어 있는 날짜보다 더 이후의 날짜일 때, 사용
   return { start: starDate, end: '' }
 }
 
@@ -81,17 +83,6 @@ export function getDayRangeList(
     {
       check: checkSameStartAndEnd(prevDateRange, selectedSecondDate),
       determine: determineStartAndEnd(startDate, endDate),
-    },
-  ]
-
-  return dayRangeLsit
-}
-
-export function getDayList(prevDateRange: any, startDate: Date) {
-  const dayRangeLsit = [
-    {
-      check: checkInitialRagne(prevDateRange),
-      determine: determineInitialRange(startDate),
     },
   ]
 
