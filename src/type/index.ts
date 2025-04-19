@@ -1,10 +1,15 @@
+import { BtnDateRangeType } from './contextType'
+
 export interface DayInfoType {
   start: number
   end: number
 }
-export type CalendarDaysUIType = {
+export interface CalendarDaysUIType {
   arrDayState: undefined | object[][] | string[][]
-  type: string
+  choiceDate: (
+    day: string | Date,
+    setDateRange: React.Dispatch<React.SetStateAction<BtnDateRangeType>>
+  ) => void
   // dateRange: DateRangeType
   // btnDisabled: string;
   // toggleDay: (day: string | Date) => void
