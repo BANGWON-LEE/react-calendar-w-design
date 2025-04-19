@@ -1,6 +1,5 @@
 import { useContext, useEffect } from 'react'
 import CalendarMonth from '../month/CalendarMonth'
-import CalendarDay from '../dates/CalendarDay'
 import { MonthContext } from '../../context/MonthProvider'
 import {
   DayContextType,
@@ -13,6 +12,7 @@ import GrayBtn from '../button/GrayBtn'
 import CalendarTime from '../time/CalendarTime'
 import { CalendarCheckTimeComponentType } from '../../type/propsType'
 import { getLastWeek, getNextWeek } from '../../util'
+import CalendarDayDatePicker from '../dates/CalendarDayDatePicker'
 
 const DatePickerCalendar = (props: CalendarCheckTimeComponentType) => {
   const { time } = props
@@ -58,7 +58,7 @@ const DatePickerCalendar = (props: CalendarCheckTimeComponentType) => {
         <div className="calendar_block_inner">
           <div className="calendar_main_block">
             <CalendarMonth />
-            <CalendarDay type={'datePicker'} />
+            <CalendarDayDatePicker />
           </div>
           {time && <CalendarTime />}
         </div>
