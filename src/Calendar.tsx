@@ -10,7 +10,7 @@ const Calendar = (props: CalendarMainPropsType) => {
       case 'range':
         return <Range time={time} />
       case 'datePicker':
-        return <DatePicker time={time} />
+        return <DatePicker />
     }
   }
 

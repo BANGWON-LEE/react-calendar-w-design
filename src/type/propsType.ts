@@ -1,10 +1,10 @@
 export interface CalendarMainPropsType {
   type: string
-  time: boolean
+  time?: boolean
 }
 
 export interface CalendarCheckTimeComponentType {
-  time: boolean
+  time?: boolean
 }
 
 export interface CalendarCheckTypeComponentType {

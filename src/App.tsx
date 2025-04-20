@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="App">
       <WonyCalendar type={'range'} time={false} />
-      <WonyCalendar type={'datePicker'} time={false} />
+      <WonyCalendar type={'datePicker'} />
     </div>
   )
 }

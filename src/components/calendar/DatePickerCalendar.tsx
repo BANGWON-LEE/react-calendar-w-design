@@ -14,8 +14,8 @@ import { CalendarCheckTimeComponentType } from '../../type/propsType'
 import { getLastWeek, getNextWeek } from '../../util'
 import CalendarDayDatePicker from '../dates/CalendarDayDatePicker'
 
-const DatePickerCalendar = (props: CalendarCheckTimeComponentType) => {
-  const { time } = props
+const DatePickerCalendar = () => {
+  // const { time } = props
 
   // context api로 전역처리 할 예정
   const { nowDate } = useContext<DateContextType>(MonthContext)
@@ -60,7 +60,7 @@ const DatePickerCalendar = (props: CalendarCheckTimeComponentType) => {
             <CalendarMonth />
             <CalendarDayDatePicker />
           </div>
-          {time && <CalendarTime />}
+          {/* {time && <CalendarTime />} */}
         </div>
         <div className="calendar_close_block">
           <GrayBtn action={onClose} text={'OK'} />

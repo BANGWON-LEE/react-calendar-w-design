@@ -5,15 +5,15 @@ import { openModalContext } from '../../context/input-btn/OpenModalProvider'
 import { CalendarCheckTimeComponentType } from '../../type/propsType'
 import DatePickerCalendar from '../calendar/DatePickerCalendar'
 
-const DatePicker = (props: CalendarCheckTimeComponentType) => {
-  const { time } = props
+const DatePicker = () => {
+  // const { time } = props
 
   const { openModal, setOpenModal } =
     useContext<RangeBtnContextType>(openModalContext)
 
   return (
     <>
-      {openModal === true && <DatePickerCalendar time={time} />}
+      {openModal === true && <DatePickerCalendar />}
       <DateInputMain />
     </>
   )
