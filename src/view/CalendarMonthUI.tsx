@@ -26,7 +26,8 @@ const CalendarMonthUI = (props: CalendarMonthUIType) => {
         </button>
       </div>
       <div className="calendar_month_block_now">
-        {choicedCurrentYear} {nowMonth}
+        <button className="calendar_header_btn">{choicedCurrentYear}</button>
+        <button className="calendar_header_btn">{nowMonth}</button>
       </div>
       <div className="calendar_month_block_inner_left">
         <button type="button" onClick={() => nextMonth(formatCurrentDate)}>

@@ -22,20 +22,18 @@
   margin: 2% auto;
   display: flex;
   justify-content: center;
-  /* width: fit-content; */
 }
 
 .calendar_month_block_now {
-  width: auto;
-  align-content: center;
+  display: flex;
 }
 
 .calendar_month_block_inner_right {
-  padding-right: 5%;
+  padding-right: 1%;
 }
 
 .calendar_month_block_inner_left {
-  padding-left: 5%;
+  padding-left: 1%;
 }
 
 .calendar_month_arrow_btn {
@@ -122,4 +120,9 @@
 
 .calendar_time_choiced_block {
   border: 1px solid #87cefa;
+}
+
+.calendar_header_btn {
+  padding: 5px;
+  margin: 5px;
 }
